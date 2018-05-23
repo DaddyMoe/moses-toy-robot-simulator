@@ -2,10 +2,7 @@ package com.doraventures.zone.robot.console.simulator;
 
 import com.doraventures.zone.robot.console.artifacts.SquareTable;
 import com.doraventures.zone.robot.console.artifacts.ToyRobot;
-import com.doraventures.zone.robot.console.command.impl.InvokeCommand;
-import com.doraventures.zone.robot.console.command.impl.MoveCommand;
-import com.doraventures.zone.robot.console.command.impl.PlaceCommand;
-import com.doraventures.zone.robot.console.command.impl.RotateCommand;
+import com.doraventures.zone.robot.console.command.impl.*;
 import com.doraventures.zone.robot.console.exceptions.ToyRobotSimulatorException;
 import com.doraventures.zone.robot.console.helpers.Direction;
 import com.doraventures.zone.robot.console.helpers.Rotate;
@@ -59,5 +56,16 @@ class AppSimulator {
     if (!robot.isPlaced()) {
       throw new ToyRobotSimulatorException("Robot has not been placed yet.");
     }
+  }
+
+  static String getReport(ToyRobot robot) throws ToyRobotSimulatorException {
+
+    checkPlaceStatus(robot);
+    ReportCommand reportCommand = ReportCommand.builder()
+        .robot(robot)
+        .build();
+
+    reportCommand.execute();
+    return robot.getReportMessage();
   }
 }

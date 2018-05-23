@@ -7,6 +7,8 @@ import lombok.Data;
 
 import java.awt.*;
 
+import static com.doraventures.zone.robot.console.helpers.ApplicationConstants.OUTPUT_TEMPLATE;
+
 /**
  * The Toy Robot. Also a Command Receiver for PLACE, MOVE, LEFT AND RIGHT Commands
  *
@@ -19,7 +21,11 @@ public class ToyRobot {
   private Point point;
   private Direction direction;
   private boolean placed = false;
+  private String reportMessage;
 
+  /**
+   * Place command Receiver.
+   */
   public void placeRobot(Point point, SquareTable squareTable) throws ToyRobotSimulatorException {
     if (squareTable.isValidPlacement(point.x, point.y)) {
       this.setPoint(point);
@@ -29,10 +35,44 @@ public class ToyRobot {
     }
   }
 
+  /**
+   * Move command Receiver.
+   */
   public void move(SquareTable squareTable) throws ToyRobotSimulatorException {
 
     Point proposedPoint = getProposedPoint(direction, point);
     placeRobot(proposedPoint, squareTable);
+  }
+
+  /**
+   * Rotate command Receiver.
+   */
+  public void rotate(Rotate rotate) {
+
+    switch (direction) {
+      case NORTH:
+        doRotationFromNorth(rotate);
+        break;
+      case EAST:
+        doRotationFromEast(rotate);
+        break;
+      case SOUTH:
+        doRotationFromSouth(rotate);
+        break;
+      case WEST:
+        doRotationFromWest(rotate);
+        break;
+    }
+  }
+
+  /**
+   * Report command Receiver.
+   */
+  public void report() {
+    reportMessage = String.format(OUTPUT_TEMPLATE,
+        this.getPoint().x,
+        this.getPoint().y,
+        this.getDirection().name());
   }
 
   private static Point getProposedPoint(Direction direction, Point point) {
@@ -55,24 +95,6 @@ public class ToyRobot {
         break;
     }
     return proposedPoint;
-  }
-
-  public void rotate(Rotate rotate) {
-
-    switch (direction) {
-      case NORTH:
-        doRotationFromNorth(rotate);
-        break;
-      case EAST:
-        doRotationFromEast(rotate);
-        break;
-      case SOUTH:
-        doRotationFromSouth(rotate);
-        break;
-      case WEST:
-        doRotationFromWest(rotate);
-        break;
-    }
   }
 
   private void doRotationFromNorth(Rotate rotate) {
