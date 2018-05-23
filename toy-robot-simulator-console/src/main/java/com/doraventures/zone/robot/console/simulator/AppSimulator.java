@@ -29,4 +29,8 @@ public class AppSimulator {
     InvokeCommand invokeCommand = InvokeCommand.builder().command(placeCommand).build();
     invokeCommand.invoke();
   }
+
+  public static void doMove(ToyRobot toyRobot, SquareTable squareTable) {
+        throw new RuntimeException("Not yet implemented");
+  }
 }
