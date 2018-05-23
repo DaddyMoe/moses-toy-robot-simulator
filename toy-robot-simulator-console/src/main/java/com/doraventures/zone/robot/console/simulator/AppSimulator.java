@@ -3,6 +3,7 @@ package com.doraventures.zone.robot.console.simulator;
 import com.doraventures.zone.robot.console.artifacts.SquareTable;
 import com.doraventures.zone.robot.console.artifacts.ToyRobot;
 import com.doraventures.zone.robot.console.command.impl.InvokeCommand;
+import com.doraventures.zone.robot.console.command.impl.MoveCommand;
 import com.doraventures.zone.robot.console.command.impl.PlaceCommand;
 import com.doraventures.zone.robot.console.exceptions.ToyRobotSimulatorException;
 import com.doraventures.zone.robot.console.helpers.Direction;
@@ -30,7 +31,17 @@ public class AppSimulator {
     invokeCommand.invoke();
   }
 
-  public static void doMove(ToyRobot toyRobot, SquareTable squareTable) {
-        throw new RuntimeException("Not yet implemented");
+  public static void doMove(ToyRobot robot, SquareTable table) throws ToyRobotSimulatorException {
+
+    if (!robot.isPlaced()) {
+      throw new ToyRobotSimulatorException("Robot has not been placed yet.");
+    }
+
+    MoveCommand moveCommand = MoveCommand.builder()
+        .robot(robot)
+        .squareTable(table)
+        .build();
+
+    moveCommand.execute();
   }
 }

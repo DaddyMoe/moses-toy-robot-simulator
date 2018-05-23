@@ -4,7 +4,6 @@ import com.doraventures.zone.robot.console.artifacts.SquareTable;
 import com.doraventures.zone.robot.console.artifacts.ToyRobot;
 import com.doraventures.zone.robot.console.exceptions.ToyRobotSimulatorException;
 import com.doraventures.zone.robot.console.helpers.Direction;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
@@ -23,13 +22,8 @@ public class AppSimulatorMoveTest {
   private final SquareTable squareTable = builder().side(SIDE).build();
   private final ToyRobot toyRobot =new ToyRobot();
 
-  @Before
-  public void setUp() throws Exception {
-    // Given
-  }
-
   @Test
-  public void shouldMoveToyRobotToNextUnitInFacingDirection() throws ToyRobotSimulatorException {
+  public void shouldMoveToyRobotToNextUnitInNorthFacingDirection() throws ToyRobotSimulatorException {
 
     // Given
     Point point = new Point(0, 0);
@@ -57,37 +51,56 @@ public class AppSimulatorMoveTest {
   }
 
 
-  @Test
-  public void shouldIgnoreInvalidMoveRequestsOnXaxis() throws ToyRobotSimulatorException {
+  @Test(expected = ToyRobotSimulatorException.class)
+  public void shouldIgnoreInvalidMoveRequestsWhilstFaceEastAtMaxUnit() throws ToyRobotSimulatorException {
 
     // Given
     Point point = new Point(4, 3);
     Direction direction = Direction.EAST;
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doMove(toyRobot, squareTable);
 
     // When
-    then(toyRobot.getPoint().x).isEqualTo(4);
-    then(toyRobot.getPoint().y).isEqualTo(0);
+    AppSimulator.doMove(toyRobot, squareTable);
   }
 
-  @Test
-  public void shouldIgnoreInvalidMoveRequestsOnYaxis() throws ToyRobotSimulatorException {
+  @Test(expected = ToyRobotSimulatorException.class)
+  public void shouldIgnoreInvalidMoveRequestsWhilstFaceWestAtOrigin() throws ToyRobotSimulatorException {
+
+    // Given
+    Point point = new Point(0, 3);
+    Direction direction = Direction.WEST;
+    AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
+
+    // When
+    AppSimulator.doMove(toyRobot, squareTable);
+  }
+
+  @Test(expected = ToyRobotSimulatorException.class)
+  public void shouldIgnoreInvalidMoveRequestsWhilstFacingNorthAtMaxUnit() throws ToyRobotSimulatorException {
 
     // Given
     Point point = new Point(2, 4);
-    Direction direction = Direction.EAST;
+    Direction direction = Direction.NORTH;
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doMove(toyRobot, squareTable);
 
     // When
-    then(toyRobot.getPoint().x).isEqualTo(4);
-    then(toyRobot.getPoint().y).isEqualTo(0);
+    AppSimulator.doMove(toyRobot, squareTable);
+  }
+
+  @Test(expected = ToyRobotSimulatorException.class)
+  public void shouldIgnoreInvalidMoveRequestsWhilstFacingSouthAtOrigin() throws ToyRobotSimulatorException {
+
+    // Given
+    Point point = new Point(2, 0);
+    Direction direction = Direction.SOUTH;
+    AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
+
+    // When
+    AppSimulator.doMove(toyRobot, squareTable);
   }
 
   @Test(expected = ToyRobotSimulatorException.class)
   public void shouldThrowExceptionWhenMoveWithoutAValidPlacedToyRobot() throws ToyRobotSimulatorException {
-
     // When
     AppSimulator.doMove(toyRobot, squareTable);
   }
