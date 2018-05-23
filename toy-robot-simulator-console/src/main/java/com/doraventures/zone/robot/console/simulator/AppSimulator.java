@@ -14,9 +14,9 @@ import java.awt.*;
  *
  * @author moses@doraventures.com
  */
-class AppSimulator {
+public class AppSimulator {
 
-  static void doPlacement(ToyRobot robot, SquareTable table, Point point, Direction direction)
+  public static void doPlacement(ToyRobot robot, SquareTable table, Point point, Direction direction)
       throws ToyRobotSimulatorException {
 
     PlaceCommand placeCommand = PlaceCommand.builder()
@@ -30,7 +30,7 @@ class AppSimulator {
     invokeCommand.invoke();
   }
 
-  static void doMove(ToyRobot robot, SquareTable table) throws ToyRobotSimulatorException {
+  public static void doMove(ToyRobot robot, SquareTable table) throws ToyRobotSimulatorException {
 
     checkPlaceStatus(robot);
     MoveCommand moveCommand = MoveCommand.builder()
@@ -41,7 +41,7 @@ class AppSimulator {
     moveCommand.execute();
   }
 
-  static void doRotate(ToyRobot robot, Rotate rotate) throws ToyRobotSimulatorException {
+  public static void doRotate(ToyRobot robot, Rotate rotate) throws ToyRobotSimulatorException {
 
     checkPlaceStatus(robot);
     RotateCommand rotateCommand = RotateCommand.builder()
@@ -58,7 +58,7 @@ class AppSimulator {
     }
   }
 
-  static String getReport(ToyRobot robot) throws ToyRobotSimulatorException {
+  public static String getReport(ToyRobot robot) throws ToyRobotSimulatorException {
 
     checkPlaceStatus(robot);
     ReportCommand reportCommand = ReportCommand.builder()
