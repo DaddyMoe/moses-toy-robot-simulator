@@ -25,36 +25,6 @@
       <version>1.0-SNAPSHOT</version>
     </dependency>
 
-    <!-- Cucumber-->
-
-    <dependency>
-      <groupId>info.cukes</groupId>
-      <artifactId>cucumber-core</artifactId>
-      <version>${cucumber.java.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>info.cukes</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>${cucumber.java.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>info.cukes</groupId>
-      <artifactId>cucumber-junit</artifactId>
-      <version>${cucumber.java.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>info.cukes</groupId>
-      <artifactId>cucumber-spring</artifactId>
-      <version>${cucumber.java.version}</version>
-      <scope>test</scope>
-    </dependency>
-
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-io</artifactId>
