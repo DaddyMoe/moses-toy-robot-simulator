@@ -2,6 +2,7 @@ package com.doraventures.zone.robot.console.artifacts;
 
 import com.doraventures.zone.robot.console.exceptions.ToyRobotSimulatorException;
 import com.doraventures.zone.robot.console.helpers.Direction;
+import com.doraventures.zone.robot.console.helpers.Rotate;
 import lombok.Data;
 
 import java.awt.*;
@@ -54,5 +55,9 @@ public class ToyRobot {
         break;
     }
     return proposedPoint;
+  }
+
+  public void rotate(SquareTable squareTable, Rotate rotate) {
+    throw new RuntimeException("Not yet implemented");
   }
 }

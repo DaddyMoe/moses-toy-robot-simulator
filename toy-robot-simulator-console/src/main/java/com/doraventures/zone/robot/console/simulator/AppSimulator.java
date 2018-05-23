@@ -5,13 +5,15 @@ import com.doraventures.zone.robot.console.artifacts.ToyRobot;
 import com.doraventures.zone.robot.console.command.impl.InvokeCommand;
 import com.doraventures.zone.robot.console.command.impl.MoveCommand;
 import com.doraventures.zone.robot.console.command.impl.PlaceCommand;
+import com.doraventures.zone.robot.console.command.impl.RotateCommand;
 import com.doraventures.zone.robot.console.exceptions.ToyRobotSimulatorException;
 import com.doraventures.zone.robot.console.helpers.Direction;
+import com.doraventures.zone.robot.console.helpers.Rotate;
 
 import java.awt.*;
 
 /**
- * The application simulator of a toy robot moving on a square tabletop, of given dimensions
+ * The application simulator of a toy robot moving on a square tabletop, of given dimensions and rotation
  *
  * @author moses@doraventures.com
  */
@@ -43,5 +45,15 @@ public class AppSimulator {
         .build();
 
     moveCommand.execute();
+  }
+
+  public static void doRotate(ToyRobot robot, SquareTable table, Rotate rotate) throws ToyRobotSimulatorException {
+    RotateCommand rotateCommand = RotateCommand.builder()
+        .robot(robot)
+        .squareTable(table)
+        .rotate(rotate)
+        .build();
+
+    rotateCommand.execute();
   }
 }
