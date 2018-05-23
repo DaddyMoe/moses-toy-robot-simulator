@@ -4,6 +4,7 @@ import com.doraventures.zone.robot.console.exceptions.ToyRobotSimulatorException
 import com.doraventures.zone.robot.console.helpers.Direction;
 import com.doraventures.zone.robot.console.helpers.Rotate;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
 
@@ -15,6 +16,7 @@ import static com.doraventures.zone.robot.console.helpers.ApplicationConstants.O
  * @author moses@doraventures.com
  */
 @Data
+@Component
 public class ToyRobot {
 
   private static final int STEP = 1;

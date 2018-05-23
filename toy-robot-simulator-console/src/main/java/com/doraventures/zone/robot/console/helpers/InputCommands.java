@@ -1,11 +1,10 @@
 package com.doraventures.zone.robot.console.helpers;
 
 /**
- * Facing Direction holder
+ * Rotate Direction enum options
  *
  * @author moses@doraventures.com
  */
-public enum  Direction {
-  NORTH, EAST, SOUTH, WEST
-
+public enum InputCommands {
+  PLACE, MOVE, REPORT, LEFT, RIGHT
 }
