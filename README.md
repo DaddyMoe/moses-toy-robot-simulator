@@ -1,6 +1,48 @@
 # Toy Robot Simulator
 
-## Description
+# Run it
+
+## Acceptance test on CI Server
+
+    mvn -P ci clean test
+    
+## Development test
+
+    mvn clean test
+      
+## Build it
+
+    mvn clean package
+
+    java -jar console/target/console-1.0-SNAPSHOT.jar
+
+
+# BDD Acceptance reports
+
+### Console report can be found in the logs
+
+![Example Console Screenshot](bdd_pretty_console.png)
+
+### Full Html report can be found in the target dir
+
+[Location here: toy-robot-simulator-acceptance/target/cucumber-reports/index.html](toy-robot-simulator-acceptance/target/cucumber-reports/index.html)
+
+![Example HTML Screenshot](bdd_pretty_html.png)
+
+
+## Notes and Assumptions:
+
+- Directions are always that of the Toy Robot not the player!
+- Currently there is not user command to intuitively kill the app.
+- Given that this is a Spring boot app, may be make more attempt at using more of spring features such as Spring's IoC container.
+- Input text command interpretation is case sensitive.  Maybe it does not need to be. 
+
+---
+
+---
+
+
+## Problem Domain Description
 
 - The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units
 - There are no other obstructions on the table surface
@@ -46,22 +88,3 @@
     - MOVE
     - REPORT
     - Output: 3,3,NORTH
-
-
-# Run it
-
-## Acceptance test on CI Server
-
-    mvn -P ci clean test
-
-## Development test
-
-    mvn clean test
-      
-## Build it
-
-    mvn clean package
-
-## Example command for Scenario 3
-
-    java -jar console/target/console-1.0-SNAPSHOT.jar
