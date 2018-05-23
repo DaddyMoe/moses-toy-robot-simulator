@@ -14,7 +14,7 @@
 
     mvn clean package
 
-    java -jar console/target/console-1.0-SNAPSHOT.jar
+    java -jar toy-robot-simulator-console/target/toy-robot-simulator-console-1.0-SNAPSHOT.jar
 
 
 # BDD Acceptance reports
