@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 /**
- * PlaceCommand implementation of Command
+ * PlaceCommand implementation of Command pattern Interface
  *
  * @author moses@doraventures.com
  */
@@ -19,8 +19,11 @@ public class MoveCommand implements Command {
   private ToyRobot robot;
   private SquareTable squareTable;
 
-  //  @Override
+  /**
+   * {@inheritDoc}
+   */
+  @Override
   public void execute() throws ToyRobotSimulatorException {
-    getRobot().move(squareTable);
+    getRobot().move(getSquareTable());
   }
 }

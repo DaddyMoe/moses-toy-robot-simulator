@@ -30,7 +30,7 @@ public class AppSimulatorRotateTest {
     Point point = new Point(0, 0);
     Direction direction = Direction.valueOf("NORTH");
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.LEFT);
+    AppSimulator.doRotate(toyRobot, Rotate.LEFT);
 
     // When
     then(toyRobot.getPoint().x).isEqualTo(0);
@@ -45,7 +45,7 @@ public class AppSimulatorRotateTest {
     Point point = new Point(3, 2);
     Direction direction = Direction.valueOf("NORTH");
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.RIGHT);
+    AppSimulator.doRotate(toyRobot, Rotate.RIGHT);
 
     // When
     then(toyRobot.getPoint().x).isEqualTo(3);
@@ -60,12 +60,12 @@ public class AppSimulatorRotateTest {
     Point point = new Point(2, 3);
     Direction direction = Direction.SOUTH;
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.LEFT);
+    AppSimulator.doRotate(toyRobot, Rotate.LEFT);
 
     // When
     then(toyRobot.getPoint().x).isEqualTo(2);
     then(toyRobot.getPoint().y).isEqualTo(3);
-    then(toyRobot.getDirection()).isEqualTo(Direction.WEST);
+    then(toyRobot.getDirection()).isEqualTo(Direction.EAST);
   }
 
   @Test
@@ -75,12 +75,12 @@ public class AppSimulatorRotateTest {
     Point point = new Point(1, 1);
     Direction direction = Direction.SOUTH;
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.RIGHT);
+    AppSimulator.doRotate(toyRobot, Rotate.RIGHT);
 
     // When
     then(toyRobot.getPoint().x).isEqualTo(1);
     then(toyRobot.getPoint().y).isEqualTo(1);
-    then(toyRobot.getDirection()).isEqualTo(Direction.EAST);
+    then(toyRobot.getDirection()).isEqualTo(Direction.WEST);
   }
 
   @Test
@@ -90,7 +90,7 @@ public class AppSimulatorRotateTest {
     Point point = new Point(2, 3);
     Direction direction = Direction.WEST;
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.LEFT);
+    AppSimulator.doRotate(toyRobot, Rotate.LEFT);
 
     // When
     then(toyRobot.getPoint().x).isEqualTo(2);
@@ -105,7 +105,7 @@ public class AppSimulatorRotateTest {
     Point point = new Point(1, 1);
     Direction direction = Direction.WEST;
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.RIGHT);
+    AppSimulator.doRotate(toyRobot, Rotate.RIGHT);
 
     // When
     then(toyRobot.getPoint().x).isEqualTo(1);
@@ -120,7 +120,7 @@ public class AppSimulatorRotateTest {
     Point point = new Point(2, 3);
     Direction direction = Direction.EAST;
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.LEFT);
+    AppSimulator.doRotate(toyRobot, Rotate.LEFT);
 
     // When
     then(toyRobot.getPoint().x).isEqualTo(2);
@@ -135,7 +135,7 @@ public class AppSimulatorRotateTest {
     Point point = new Point(1, 1);
     Direction direction = Direction.EAST;
     AppSimulator.doPlacement(toyRobot, squareTable, point, direction);
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.RIGHT);
+    AppSimulator.doRotate(toyRobot, Rotate.RIGHT);
 
     // When
     then(toyRobot.getPoint().x).isEqualTo(1);
@@ -146,6 +146,6 @@ public class AppSimulatorRotateTest {
   @Test(expected = ToyRobotSimulatorException.class)
   public void shouldThrowExceptionWhenAttemptingRotateWithoutAValidPlacedToyRobot() throws ToyRobotSimulatorException {
     // When
-    AppSimulator.doRotate(toyRobot, squareTable, Rotate.RIGHT);
+    AppSimulator.doRotate(toyRobot, Rotate.RIGHT);
   }
 }

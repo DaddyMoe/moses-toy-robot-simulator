@@ -11,7 +11,7 @@ import lombok.Getter;
 import java.awt.*;
 
 /**
- * PlaceCommand implementation of Command
+ * PlaceCommand implementation of Command pattern Interface
  *
  * @author moses@doraventures.com
  */
@@ -24,10 +24,13 @@ public class PlaceCommand implements Command {
   private Point point;
   private Direction direction;
 
-  //  @Override
+  /**
+   * {@inheritDoc}
+   */
+  @Override
   public void execute() throws ToyRobotSimulatorException {
 
-    getRobot().placeRobot(point, squareTable);
-    getRobot().setDirection(direction);
+    getRobot().placeRobot(getPoint(), getSquareTable());
+    getRobot().setDirection(getDirection());
   }
 }

@@ -23,7 +23,7 @@ public class ToyRobot {
   public void placeRobot(Point point, SquareTable squareTable) throws ToyRobotSimulatorException {
     if (squareTable.isValidPlacement(point.x, point.y)) {
       this.setPoint(point);
-      placed = true;
+      setPlaced(true);
     } else {
       throw new ToyRobotSimulatorException("InValid position coordinates");
     }
@@ -57,7 +57,57 @@ public class ToyRobot {
     return proposedPoint;
   }
 
-  public void rotate(SquareTable squareTable, Rotate rotate) {
-    throw new RuntimeException("Not yet implemented");
+  public void rotate(Rotate rotate) {
+
+    switch (direction) {
+      case NORTH:
+        doRotationFromNorth(rotate);
+        break;
+      case EAST:
+        doRotationFromEast(rotate);
+        break;
+      case SOUTH:
+        doRotationFromSouth(rotate);
+        break;
+      case WEST:
+        doRotationFromWest(rotate);
+        break;
+    }
+  }
+
+  private void doRotationFromNorth(Rotate rotate) {
+    if (Rotate.RIGHT.equals(rotate)) {
+      direction = Direction.EAST;
+    }
+    if (Rotate.LEFT.equals(rotate)) {
+      direction = Direction.WEST;
+    }
+  }
+
+  private void doRotationFromEast(Rotate rotate) {
+    if (Rotate.RIGHT.equals(rotate)) {
+      direction = Direction.SOUTH;
+    }
+    if (Rotate.LEFT.equals(rotate)) {
+      direction = Direction.NORTH;
+    }
+  }
+
+  private void doRotationFromSouth(Rotate rotate) {
+    if (Rotate.RIGHT.equals(rotate)) {
+      direction = Direction.WEST;
+    }
+    if (Rotate.LEFT.equals(rotate)) {
+      direction = Direction.EAST;
+    }
+  }
+
+  private void doRotationFromWest(Rotate rotate) {
+    if (Rotate.RIGHT.equals(rotate)) {
+      direction = Direction.NORTH;
+    }
+    if (Rotate.LEFT.equals(rotate)) {
+      direction = Direction.SOUTH;
+    }
   }
 }

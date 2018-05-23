@@ -9,6 +9,11 @@ import com.doraventures.zone.robot.console.exceptions.ToyRobotSimulatorException
  */
 public interface Command {
 
-  public void execute() throws ToyRobotSimulatorException;
+  /**
+   * Delegate Command to referenced Object (toy in this case to carry out command)
+   *
+   * @throws ToyRobotSimulatorException
+   */
+  void execute() throws ToyRobotSimulatorException;
 
 }
