@@ -38,7 +38,8 @@ public class AppSimulator {
         .squareTable(table)
         .build();
 
-    moveCommand.execute();
+    InvokeCommand invokeCommand = InvokeCommand.builder().command(moveCommand).build();
+    invokeCommand.invoke();
   }
 
   public static void doRotate(ToyRobot robot, Rotate rotate) throws ToyRobotSimulatorException {
@@ -49,7 +50,8 @@ public class AppSimulator {
         .rotate(rotate)
         .build();
 
-    rotateCommand.execute();
+    InvokeCommand invokeCommand = InvokeCommand.builder().command(rotateCommand).build();
+    invokeCommand.invoke();
   }
 
   private static void checkPlaceStatus(ToyRobot robot) throws ToyRobotSimulatorException {
@@ -65,7 +67,8 @@ public class AppSimulator {
         .robot(robot)
         .build();
 
-    reportCommand.execute();
+    InvokeCommand invokeCommand = InvokeCommand.builder().command(reportCommand).build();
+    invokeCommand.invoke();
     return robot.getReportMessage();
   }
 }
