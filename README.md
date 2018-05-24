@@ -36,7 +36,8 @@
 - Currently there is not user command to intuitively kill the app.
 - Given that this is a Spring boot app, may be make more attempt at using more of spring features such as Spring's IoC container.
 - Input text command interpretation is case sensitive.  Maybe it does not need to be. 
-
+- `System.console()` can be problematic debugging within most IDEs. May be replace this with Scanner from `java.util.Scanner`
+- Refactor models to a maven child module for models.
 ---
 
 ---
